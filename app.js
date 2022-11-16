@@ -1,3 +1,4 @@
+//const path = require('path');
 const express = require('express');
 const dateFormat = require('dateformat');
 const request = require('request');
@@ -15,6 +16,7 @@ function logErr(err) {
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
+//app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({
     extended: true
 }));
@@ -39,7 +41,7 @@ app.get('/', function(req,res) {
 				"genre": ""
             };
             logErr(error);
-			res.render('home', quote);
+			res.render('index', quote);
 		} else {
 			console.log(body);
 			var quote = JSON.parse(body);
@@ -47,7 +49,7 @@ app.get('/', function(req,res) {
 			quote.today = dateFormat(now, "dddd, mmmm dS, yyyy");
             quote.title = "Quote of the Day";
             logMsg('dishing up quote: '  + JSON.stringify(quote) );
-			res.render('home', quote);
+			res.render('index', quote);
 		}
 	});
 });
@@ -65,13 +67,13 @@ app.get('/random', function(req,res) {
 				"genre": ""
             };
             logErr(quote);
-			res.render('home', quote);
+			res.render('index', quote);
         } else {
             var quote = JSON.parse(body);
             quote.today = "";
             quote.title = "Random Quote";
             logMsg('dishing up random quote: '  + JSON.stringify(quote) );
-            res.render('home', quote);
+            res.render('index', quote);
         }
 	  });
 });
