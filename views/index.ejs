@@ -91,16 +91,16 @@
       <p class="lead text-muted">
           <i><%=quote%></i>
       </p>
-      <p>- <%=author%></p>
-      <p>[<%=genre%>]</p>
     </div>
+
+    <template>
+      <h3>VUE Quotes here</h3>
+      <div>
+        {{ this.quotes }}
+      </div>
+    </template>
   </section>
-  <template>
-    <h3>VUE Quotes here</h3>
-    <div>
-      {{ this.quotes }}
-    </div>
-  </template>
+  
 
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.10/vue.min.js"
