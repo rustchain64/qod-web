@@ -76,6 +76,8 @@ app.get('/random', function(req,res) {
 	  });
 });
 
+
+
 var randomIntervalId = null;
 
 function getRandomQuote(){

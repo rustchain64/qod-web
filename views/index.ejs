@@ -95,6 +95,12 @@
       <p>[<%=genre%>]</p>
     </div>
   </section>
+  <template>
+    <h3>VUE Quotes here</h3>
+    <div>
+      {{ this.quotes }}
+    </div>
+  </template>
 
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.10/vue.min.js"
@@ -112,64 +118,34 @@
         name: '',
         stock: 0,
       },
-      fruits: [],
-      method: '',
-      url: '',
-      data: {},
-      fruit: '',
+      quotes: '',
     },
 
-    methods: {
-      edit(fruit) {
-        this.form.name = fruit.name;
-        this.form.stock = parseInt(fruit.stock);
-        this.form.id = fruit.id;
-      },
-      async remove(fruit) {
-        await fetch(`/api/fruits/${fruit.id}`, {
-          method: 'DELETE',
-        })
-          .then(this._success)
-          .catch(this._error);
-      },
-      
-      async update() {
-        this.form.name = this.$refs.name.value;
-        this.form.stock = this.$refs.stock.value;
-        if (this.form.id == -1) {
-          this.method = 'POST';
-          this.url = '/api/fruits';
-          this.data.name = this.form.name;
-          this.data.stock = this.form.stock;
-        } else {
-          this.method = 'PUT';
-          this.url = '/api/fruits/' + this.form.id;
-          this.data.name = this.form.name;
-          this.data.stock = this.form.stock;
-        }
-
-        await fetch(this.url, {
-          method: this.method,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(this.data),
-        })
-          .then(this._success)
-          .catch(this._error);
-      },
-
+    methods: {     
       async _refreshPageData() {
-            const result = await fetch('/api/fruits', {
-              method: 'GET',
-            });
-            if (result.ok) {
-              const resultData = await result.json();
-              this.fruits = resultData;
-            } else {
-              console.log(result.statusText);
-            }
-          },
+        const result = await fetch('/random', {
+          method: 'GET',
+        });
+        if (result.ok) {
+          const resultData = await result.json();
+          this.quotes = resultData;
+          this.quotes.today = '',
+          this.quotes.title = 'Random Quote'
+        } else {
+          console.log(result.statusText);
+        }
+      },
+      // async _refreshPageData() {
+      //   const result = await fetch('/api/fruits', {
+      //     method: 'GET',
+      //   });
+      //   if (result.ok) {
+      //     const resultData = await result.json();
+      //     this.fruits = resultData;
+      //   } else {
+      //     console.log(result.statusText);
+      //   }
+      // },
       _success(response) {
         this._refreshPageData();
         this._clearForm();
