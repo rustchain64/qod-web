@@ -1,18 +1,16 @@
-FROM registry.redhat.io/rhel8/nodejs-16
+# base image
+FROM node:12.2.0-alpine
 
-ENV APP_ROOT=/opt/app-root
+# set working directory
+WORKDIR /app
 
-WORKDIR $APP_ROOT
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-COPY app.js .
-COPY LICENSE .
-COPY package.json .
-COPY build.txt .
-COPY views ./views
-COPY public ./public
+# install and cache app dependencies
+COPY package.json /app/package.json
+RUN npm install
+RUN npm install @vue/cli@3.7.0 -g
 
-RUN npm install 
-
-EXPOSE 8080
-
-CMD ["node", "app.js"]
+# start app
+CMD ["npm", "run", "serve"]
