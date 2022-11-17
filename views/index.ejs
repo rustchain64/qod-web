@@ -86,112 +86,16 @@
 <!-- convert to VUEjs-->
   <section class="jumbotron text-center">
     <div class="container">
-      <h4 class="card-header" >Login</h4>
-      <div class="card-body">
-      
-        <h3>Add/Edit a Referral</h3>
-
-      <form @submit.prevent="update">
-        <div class="row">
-          <div class="col-6">
-            <input
-              v-model="form.name"
-              type="text"
-              placeholder="Name"
-              ref="name"
-              size="60"
-            />
-          </div>
-          <div class="col-6">
-            <input
-              type="number"
-              v-model="form.stock"
-              placeholder="Stock"
-              ref="stock"
-              size="60"
-              min="0"
-            />
-          </div>
-        </div>
-        <input type="submit" value="Save" />
-      </form>
-      </div>
-
-      <div class="col-8">
-        <a @click="edit( fruit )" class="btn">Edit</a>
-        <a @click="remove( fruit )" class="btn">Remove</a>
-      </div>
-
-      <h3>VUE Quotes are here </h3>
-      <div>
-        {{ this.quotes.title }}
-        {{ this.quotes.today }}
-        {{ this.quotes }}
-        <button @click="testFetch">Fetch</button>
-      </div>
 
       <h1 class="jumbotron-heading"><%= title %></h1>
       <h2><%= today %></h2>
       <p class="lead text-muted">
           <i><%=quote%></i>
       </p>
+
     </div>
 
   </section>
   
-
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.10/vue.min.js"
-    integrity="sha512-H8u5mlZT1FD7MRlnUsODppkKyk+VEiCmncej8yZW1k/wUT90OQon0F9DSf/2Qh+7L/5UHd+xTLrMszjHEZc2BA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  >
-</script>
-<script>
-  const app = new Vue({
-    el: '#app',
-    data: {
-      form: {
-        id: -1,
-        name: 'INIT NAME',
-        stock: 10,
-      },
-      quotes: {
-        today: 'What is tody',
-        title: 'My title',
-      },
-    },
-
-    methods: {
-      testFetch() {
-        console.log("TEST FETCH");
-      },
-      async update() {
-            this.form.name = this.$refs.name.value;
-            this.form.stock = this.$refs.stock.value;
-      },
-      async _refreshPageData() {
-        const result = await fetch('/random', {
-          method: 'GET',
-        });
-        if (result.ok) {
-          const resultData = await result.json();
-          
-          console.log("RESULT DATA", resultData);
-          this.quotes = resultData;
-          this.quotes.today = 'Today is the last day of the first day',
-          this.quotes.title = 'Random Quote'
-        } else {
-          console.log("No result",result.statusText);
-        }
-      },
-     
-    },
-    mounted: function () {
-      this._refreshPageData();
-    },
-  });
-</script>
-    
 </body>
 </html>

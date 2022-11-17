@@ -2,7 +2,7 @@ const express = require('express');
 const dateFormat = require('dateformat');
 const request = require('request');
 
-const QOD_API_URL = process.env.QOD_API_URL;
+const VUE_APP_QOD_API_URL = process.env.VUE_APP_QOD_API_URL;
 
 function logMsg( msg ) {
     console.log(msg);
@@ -28,8 +28,8 @@ app.enable('trust proxy');
 
 app.get('/', function(req,res) {
     logMsg('GET request: /');
-    logMsg('calling ' + QOD_API_URL + '/daily');
-	request(QOD_API_URL+'/daily', function (error, response, body) {
+    logMsg('calling ' + VUE_APP_QOD_API_URL + '/daily');
+	request(VUE_APP_QOD_API_URL+'/daily', function (error, response, body) {
 		if( error ) {
 			var quote = {
 				"title": "QOD Error",
@@ -54,8 +54,8 @@ app.get('/', function(req,res) {
 
 app.get('/random', function(req,res) {
     logMsg('GET request: /random');
-    logMsg('calling ' + QOD_API_URL+'/random');
-	request(QOD_API_URL+'/random', function (error, response, body) {
+    logMsg('calling ' + VUE_APP_QOD_API_URL+'/random');
+	request(VUE_APP_QOD_API_URL+'/random', function (error, response, body) {
         if( error ) {
             var quote = {
 				"title": "QOD Error",
@@ -81,7 +81,7 @@ app.get('/random', function(req,res) {
 var randomIntervalId = null;
 
 function getRandomQuote(){
-    request(QOD_API_URL+'/random', function (error, response, body) {
+    request(VUE_APP_QOD_API_URL+'/random', function (error, response, body) {
         if( error ) {
             var quote = {
 				"title": "QOD Error",
