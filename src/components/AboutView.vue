@@ -1,7 +1,11 @@
 <template>
   <div class="about">
     <div class="card m-3" id="form_bg">
-      <img alt="Go Free logo" class="nav_logo" src="@/assets/pie_logo.png" />
+      <img
+        alt="Go Free logo"
+        class="nav_logo"
+        src="@/assets/VUE_APP_QOD_API_URL.png"
+      />
 
       <h4 class="card-header">Create Login</h4>
       <div class="card-body">

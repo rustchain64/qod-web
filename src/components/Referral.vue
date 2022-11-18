@@ -9,155 +9,152 @@
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
   <div>
-    <div  id="card-header">
+    <div id="card-header">
       <h3>Finish and Approve Referral as Merchant</h3>
       <div class="form-group" id="pending-box">
         <label><strong>Status:</strong></label>
         {{ currentReferral.published ? "Published" : "Pending" }}
       </div>
     </div>
-    
+
     <div class="card-body" id="card-body-bg">
       <div class="list">
-        
-    <Form>
-      <div class="form-row" id="form_row_bg">
-        <div class="form-group space" id="form_group_bg" >
-          <label for="yourName">Your Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="yourName"
-            v-model="currentReferral.yourName"
-          />
-        </div>
-        <div class="form-group" id="form_group_bg">
-          <label for="referralName">Referrals Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="referralName"
-            v-model="currentReferral.referralName"
-          />
-        </div>
-      </div>
-      <div class="form-row" id="form_row_bg">
-        <div class="form-group space" id="form_group_bg">
-          <label for="agentName">Agent Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="agentName"
-            v-model="currentReferral.agentName"
-          />
-        </div>
-        <div class="form-group" id="form_group_bg">
-          <label for="agentCode">Agent Code</label>
-          <input
-            type="text"
-            class="form-control"
-            id="agentCode"
-            v-model="currentReferral.agentCode"
-          />
-        </div>
-      </div>
-      <div class="form-row" id="form_row_bg">
-        <div class="form-group space" id="form_group_bg">
-          <label for="businessName space">Business Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="businessName"
-            v-model="currentReferral.businessName"
-          />
-        </div>      
-        <div class="form-group" id="form_group_bg">
-          <label for="phone">Phone</label>
-          <input
-            type="text"
-            class="form-control"
-            id="phone"
-            v-model="currentReferral.phone"
-          />
-        </div>
-      </div>
-      <div class="form-row" >
-        <div class="form-group space" id="form_group_bg">
-          <label for="email">Email</label>
-          <input
-            type="text"
-            class="form-control"
-            id="email"
-            v-model="currentReferral.email"
-          />
-        </div>
-        <div class="form-group" id="form_group_bg">
-          <label for="ss">SS #</label>
-          <input
-            type="text"
-            class="form-control"
-            id="ss"
-            v-model="currentReferral.ss"
-          />
-        </div>     
-      </div>
-      <div class="form-group space">
-        <label for="bankName">Bank Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="bankName"
-          v-model="currentReferral.bankName"
-        />
-      </div>
-      <div class="form-group space">
-        <label for="routingNumber">Routing Number</label>
-        <input
-          type="text"
-          class="form-control"
-          id="routingNumber"
-          v-model="currentReferral.routingNumber"
-        />
-      </div>
-      <div class="form-group space">
-        <label for="accountNumber">Account Number</label>
-        <input
-          type="text"
-          class="form-control"
-          id="accountNumber"
-          v-model="currentReferral.accountNumber"
-        />
-      </div>
-      <div class="form-group space">
-        <label for="title">Note</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-          v-model="currentReferral.title"
-        />
-      </div>
-      <div class="form-group space">
-        <label for="description">Description</label>
-        <input
-          type="text"
-          class="form-control"
-          id="description"
-          v-model="currentReferral.description"
-        />
+        <Form>
+          <div class="form-row" id="form_row_bg">
+            <div class="form-group space" id="form_group_bg">
+              <label for="yourName">Your Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="yourName"
+                v-model="currentReferral.yourName"
+              />
+            </div>
+            <div class="form-group" id="form_group_bg">
+              <label for="referralName">Referrals Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="referralName"
+                v-model="currentReferral.referralName"
+              />
+            </div>
+          </div>
+          <div class="form-row" id="form_row_bg">
+            <div class="form-group space" id="form_group_bg">
+              <label for="agentName">Agent Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="agentName"
+                v-model="currentReferral.agentName"
+              />
+            </div>
+            <div class="form-group" id="form_group_bg">
+              <label for="agentCode">Agent Code</label>
+              <input
+                type="text"
+                class="form-control"
+                id="agentCode"
+                v-model="currentReferral.agentCode"
+              />
+            </div>
+          </div>
+          <div class="form-row" id="form_row_bg">
+            <div class="form-group space" id="form_group_bg">
+              <label for="businessName space">Business Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="businessName"
+                v-model="currentReferral.businessName"
+              />
+            </div>
+            <div class="form-group" id="form_group_bg">
+              <label for="phone">Phone</label>
+              <input
+                type="text"
+                class="form-control"
+                id="phone"
+                v-model="currentReferral.phone"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group space" id="form_group_bg">
+              <label for="email">Email</label>
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                v-model="currentReferral.email"
+              />
+            </div>
+            <div class="form-group" id="form_group_bg">
+              <label for="ss">SS #</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ss"
+                v-model="currentReferral.ss"
+              />
+            </div>
+          </div>
+          <div class="form-group space">
+            <label for="bankName">Bank Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="bankName"
+              v-model="currentReferral.bankName"
+            />
+          </div>
+          <div class="form-group space">
+            <label for="routingNumber">Routing Number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="routingNumber"
+              v-model="currentReferral.routingNumber"
+            />
+          </div>
+          <div class="form-group space">
+            <label for="accountNumber">Account Number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="accountNumber"
+              v-model="currentReferral.accountNumber"
+            />
+          </div>
+          <div class="form-group space">
+            <label for="title">Note</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              v-model="currentReferral.title"
+            />
+          </div>
+          <div class="form-group space">
+            <label for="description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              v-model="currentReferral.description"
+            />
+          </div>
+
+          <div class="form-group">
+            <label><strong>Status:</strong></label>
+            {{ currentReferral.published ? "Published" : "Pending" }}
+          </div>
+        </Form>
+        <!-- </div> -->
       </div>
 
-      <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentReferral.published ? "Published" : "Pending" }}
-      </div>
-    </Form>
-  <!-- </div> -->
-  </div>
-  
-
-  
-    <!-- <button
+      <!-- <button
       class="badge badge-primary mr-2"
       v-if="currentReferral.published"
       @click="updatePublished(false)"
@@ -172,35 +169,35 @@
       Publish
     </button> -->
 
-    <button
-      class="btn btn-primary mr-2"
-      v-if="currentReferral.published"
-      @click="updatePublished(false)"
-    >
-      <!-- Is Active
+      <button
+        class="btn btn-primary mr-2"
+        v-if="currentReferral.published"
+        @click="updatePublished(false)"
+      >
+        <!-- Is Active
       Is Active -->
-      Revoke
-    </button>
-    <button
-      v-else
-      class="btn btn-primary mr-2"
-      @click="updatePublished(true)"
-    >
-      <!-- Not Active
+        Revoke
+      </button>
+      <button
+        v-else
+        class="btn btn-primary mr-2"
+        @click="updatePublished(true)"
+      >
+        <!-- Not Active
       Not Active -->
-      Approve
-    </button>
+        Approve
+      </button>
 
-    <button class="btn btn-danger mr-2" @click="deleteTutorial">
-      Delete
-    </button>
+      <button class="btn btn-danger mr-2" @click="deleteTutorial">
+        Delete
+      </button>
 
-    <button type="submit" class="btn btn-success" @click="updateTutorial">
-      Update
-    </button>
-    <p>{{ message }}</p>
+      <button type="submit" class="btn btn-success" @click="updateTutorial">
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -279,7 +276,7 @@ export default {
 #card-header {
   display: flex;
   justify-content: space-between;
-  background-color:rgba(255,255,255,.7);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 #card-header h3 {
   margin-left: 2%;
@@ -295,7 +292,7 @@ export default {
   padding-right: 1%;
 }
 #card-body-bg {
-  background-color:rgba(255,255,255,.4);
+  background-color: rgba(255, 255, 255, 0.4);
   width: 100%;
 }
 #form_row_bg {
@@ -313,23 +310,23 @@ export default {
 } */
 
 .bg {
-    animation:slide 4s ease-in-out infinite alternate;
-    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
-    bottom:0;
-    left:-50%;
-    opacity:.5;
-    position:fixed;
-    right:-50%;
-    top:0;
-    z-index:-1;
+  animation: slide 4s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
 }
- 
+
 .bg2 {
-    animation-direction:alternate-reverse;
-    animation-duration:2s;
+  animation-direction: alternate-reverse;
+  animation-duration: 2s;
 }
- 
+
 .bg3 {
-    animation-duration:4s;
+  animation-duration: 4s;
 }
 </style>

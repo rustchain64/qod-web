@@ -26,7 +26,6 @@ class AgentCodeDataService {
   deleteAll() {
     return http.delete(`/agentCodes`);
   }
-
 }
 
 export default new AgentCodeDataService();

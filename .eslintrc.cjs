@@ -8,8 +8,8 @@ module.exports = {
     "eslint:recommended",
     "@vue/eslint-config-prettier",
   ],
-  rules: { 
-    "prettier/prettier": ["error", { endOfLine: "auto" }] 
+  rules: {
+    "prettier/prettier": ["error", { endOfLine: "auto" }],
   },
   overrides: [
     {
@@ -18,10 +18,10 @@ module.exports = {
     },
   ],
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 2020,
+    sourceType: "module",
   },
   env: {
     "vue/setup-compiler-macros": true,
-    "vue/multi-word-component-names": false
-  }
+  },
 };
