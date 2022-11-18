@@ -7,7 +7,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <img alt="Vue logo" src="../assets/pie_logo.png" width="400" />
+    <img alt="Vue logo" src="../assets/images/pie_logo.png" width="400" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <!-- <AddReferralView /> -->
   </div>

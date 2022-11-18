@@ -5,7 +5,11 @@
       <router-link to="/about">About</router-link>
     </div>
     <div class="card m-3" id="form_bg">
-      <img alt="Go Free logo" class="nav_logo" src="@/assets/pie_logo.png" />
+      <img
+        alt="Go Free logo"
+        class="nav_logo"
+        src="@/assets/images/pie_logo.png"
+      />
 
       <h4 class="card-header">Create Login</h4>
       <div class="card-body">
