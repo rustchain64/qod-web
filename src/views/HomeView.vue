@@ -1,26 +1,27 @@
-<script setup>
-import AddReferralView from "./referrals/AddReferralView.vue";
-</script>
-
 <template>
   <div class="bg"></div>
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
-  <div class="home">
+  <div>
+    <div>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
     <img alt="Vue logo" src="../assets/pie_logo.png" width="400" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
-    <AddReferralView />
+    <!-- <AddReferralView /> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-
+//import AddReferralView from "./referrals/AddReferralView.vue";
 export default {
   name: "HomeView",
   components: {
     HelloWorld,
+    //AddReferralView,
   },
 };
 </script>

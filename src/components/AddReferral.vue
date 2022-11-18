@@ -11,7 +11,7 @@ import { reactive } from "vue";
 
 import { useUsersStore } from "@/stores";
 const usersStore = useUsersStore;
-//usersStore.getAll();
+usersStore.getAll();
 const { users } = storeToRefs(usersStore);
 //usersStore.getAll(); see the moved method
 

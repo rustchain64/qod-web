@@ -5,7 +5,7 @@ import { router } from "@/router";
 import { useAlertStore } from "@/stores";
 
 //const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
-const baseUrl = `${this.process.env.VITE_API_URL}/users`;
+const baseUrl = `http://localhost:4000/users`;
 
 export const useAuthStore = defineStore({
   id: "auth",
