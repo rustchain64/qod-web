@@ -1,4 +1,7 @@
-
+<script setup>
+//import { RouterView } from 'VUE_APP_QOD_API_URL'
+//import HelloWorld from './components/HelloWorld.vue'
+</script>
 
 <template>
   <div class="container pt-4 pb-4">
@@ -12,16 +15,21 @@
       <div class="value"> QUOTE API ::  {{ this.qodApiUrl }}</div>
       <button @click="showQuoteApi()">SHOW QUOTE API</button>
     </div>
-    <!-- <HelloWorld msg="Apple Pie"/> -->
+    <HelloWorld msg="Apple Pie"/>
   </div>
   <div class="container pt-4 pb-4">
-      <!-- <router-view /> -->
+      <router-view />
   </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue'
+
 export default {
   name: 'App',
+  components: {
+    HelloWorld
+  },
   data() {
     return {     
       envValue: 'test',
