@@ -1,75 +1,30 @@
-<script setup>
-//import { RouterView } from 'VUE_APP_QOD_API_URL'
-//import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div class="container pt-4 pb-4">
-    <img alt="Vue logo" src="./assets/pie_logo.png" width="250">
-    <div class="my-row">
-      <div class="value">ROOT API ::  {{ this.envValue }}</div>
-      <button @click="showRootApi()">SHOW ROOT API</button>
-    </div>
-
-    <div class="my-row">
-      <div class="value"> QUOTE API ::  {{ this.qodApiUrl }}</div>
-      <button @click="showQuoteApi()">SHOW QUOTE API</button>
-    </div>
-    <HelloWorld msg="Apple Pie"/>
-  </div>
-  <div class="container pt-4 pb-4">
-      <router-view />
-  </div>
+  <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </nav>
+  <router-view/>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  },
-  data() {
-    return {     
-      envValue: 'test',
-      qodApiUrl: 'greetings',
-    };
-  },
-  methods: {
-    showRootApi() {
-      console.log(process.env.VUE_APP_ROOT_API);
-      this.envValue = process.env.VUE_APP_ROOT_API;
-      //router.push(this.returnUrl || '/adminDashboard');
-    },
-    showQuoteApi() {
-      console.log(process.env.VUE_APP_QOD_API_URL);
-      this.qodApiUrl = process.env.VUE_APP_QOD_API_URL;
-      //router.push(this.returnUrl || '/adminDashboard');
-    },
-    mounted() {
-      console.log("mounted");      
-    },
-  }
-}
-</script>
-
 <style>
-@import '@/assets/main.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
-.my-row {
-  width: 50vw;
-  display: flex;
-  justify-content: center;
+
+nav {
+  padding: 30px;
 }
-.value {
-  margin-right: 10%;
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
