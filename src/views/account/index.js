@@ -1,3 +1,3 @@
-export { default as AccountLayout } from "./AccountLayout.vue";
-export { default as AccountLogin } from "./AccountLogin.vue";
-export { default as AccountRegister } from "./AccountRegister.vue";
+export { default as Layout } from "./Layout.vue";
+export { default as Login } from "./Login.vue";
+export { default as Register } from "./Register.vue";

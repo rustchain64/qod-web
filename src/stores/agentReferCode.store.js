@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
-// import { fetchWrapper } from '@/helpers';
-// import { useAuthStore } from '@/stores';
-// import referralCodeGenerator from 'referral-code-generator'
+// import { fetchWrapper } from "@/helpers";
+// import { useAuthStore } from "@/stores";
+// import referralCodeGenerator from "referral-code-generator";
 
 //const baseUrl = `${import.meta.env.VITE_API_URL}/referrals`;
 

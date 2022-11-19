@@ -1,13 +1,11 @@
-import { AccountLayout } from "@/views/account/AccountLayout.vue";
-import { AccountLogin } from "@/views/account/AccountLogin.vue";
-import { AccountRegister } from "@/views/account/AccountRegister.vue";
+import { Layout, Login, Register } from "@/views/account";
 
 export default {
   path: "/account",
-  component: AccountLayout,
+  component: Layout,
   children: [
     { path: "", redirect: "login" },
-    { path: "login", component: AccountLogin },
-    { path: "register", component: AccountRegister },
+    { path: "login", component: Login },
+    { path: "register", component: Register },
   ],
 };

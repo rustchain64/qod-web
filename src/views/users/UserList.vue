@@ -3,8 +3,9 @@ import { storeToRefs } from "pinia";
 import { useAgentReferCodeStore } from "@/stores";
 import { useUsersStore } from "@/stores";
 
-// eslint-disable-next-line no-unused-vars
 const referallCodeStore = useAgentReferCodeStore();
+const { refUsers } = storeToRefs(referallCodeStore);
+
 const usersStore = useUsersStore();
 const { users } = storeToRefs(usersStore);
 usersStore.getAll();
@@ -94,7 +95,7 @@ export default {
   },
   methods: {
     fetchReferralCodes() {
-      let returnCodes = this.referallCodeStore.agentCodes;
+      let returnCodes = refUsers.agentCodes;
       console.log("User List : ", returnCodes[0]);
       let codesLength = returnCodes[0].length - 1;
       this.length = codesLength;

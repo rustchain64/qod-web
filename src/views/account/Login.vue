@@ -21,7 +21,11 @@ async function onSubmit(values) {
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
   <div class="card m-3" id="form_bg">
-    <img alt="Go Free logo" class="logo" src="@/assets/images/pie_logo.png" />
+    <img
+      alt="Go Free logo"
+      class="logo"
+      src="@/assets/images/transparent/pie_io_clr_slgn_trns.png"
+    />
     <h4 class="card-header">Login</h4>
     <div class="card-body">
       <Form

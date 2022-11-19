@@ -1,6 +1,3 @@
-<!-- eslint-disable prettier/prettier -->
-<!-- eslint-disable prettier/prettier -->
-<!-- eslint-disable prettier/prettier -->
 <script setup>
 //import { storeToRefs } from "pinia";
 import { useAuthStore } from "@/stores";
@@ -11,22 +8,25 @@ const authStore = useAuthStore();
 
 <template>
   <div class="wrapper">
-    <div class="header-row">
-      <div class="pie_log">
-        <img alt="pie" src="@/assets/images/pie_logo.png" height="80" />
-      </div>
-      <!-- <div>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-      </div> -->
+    <div v-show="authStore.user" class="nav_wrapper">
+      <img
+        alt="Go Free logo"
+        class="nav_logo"
+        src="@/assets/images/transparent/pie_io_clr_slgn_trns.png"
+        height="80"
+      />
       <!-- <div class="navbar-nav"> -->
-      <!-- <div class="nav_links">
-      <RouterLink to="/referrals" class="nav-link">Referrals</RouterLink>
-      <RouterLink to="/users" class="nav-item nav-link">Users</RouterLink>
-      <RouterLink to="/list" class="nav-link">Referrals</RouterLink>
-      <RouterLink to="/referral" class="nav-item nav-link">Referral</RouterLink>
-      <RouterLink to="/add" class="nav-item nav-link">Add</RouterLink>
-    </div> -->
+      <div class="nav_links">
+        <RouterLink to="/referrals" class="nav-link">Referrals</RouterLink>
+        <RouterLink to="/users" class="nav-item nav-link">Users</RouterLink>
+        <!-- <RouterLink to="/list" class="nav-link">Referrals</RouterLink> -->
+        <RouterLink to="/referral" class="nav-item nav-link"
+          >Referral</RouterLink
+        >
+        <RouterLink to="/add" class="nav-item nav-link">Add</RouterLink>
+      </div>
+
+      <!-- </div> -->
 
       <div class="logout_button">
         <button
@@ -42,35 +42,35 @@ const authStore = useAuthStore();
         </button>
       </div>
     </div>
-    <div class="contents">
-      <router-view />
+
+    <!-- <div class="app-container" :class="authStore.user && 'bg-light'"> -->
+    <div>
+      <div class="container pt-4 pb-4">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style scoped>
+@import "@/assets/base.css";
+@import "@/assets/main.css";
+
+.nav_wrapper {
+  height: 10vh;
 }
 
-.header-row {
-  display: flex;
-  width: 900px;
+.nav_logo {
+  float: left;
 }
-.pie_logo {
+.nav_links {
+  display: flex;
+  flex-direction: row;
   float: left;
 }
 
 .logout_button {
   float: right;
   vertical-align: top;
-}
-
-.contents {
-  clear: both;
 }
 </style>

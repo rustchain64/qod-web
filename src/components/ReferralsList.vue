@@ -2,7 +2,6 @@
 import { storeToRefs } from "pinia";
 import { useAuthStore } from "@/stores";
 const authStore = useAuthStore();
-// eslint-disable-next-line no-unused-vars
 const { user } = storeToRefs(authStore);
 </script>
 
@@ -134,7 +133,7 @@ export default {
     };
   },
   created() {
-    let currentUser = this.user;
+    let currentUser = user;
     this.userData = currentUser.agentCode;
     this.question = currentUser.agentCode;
     console.log("REFERRALS LIST USER AGENT CODE IS : ", this.userData);

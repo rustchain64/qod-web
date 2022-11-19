@@ -10,7 +10,7 @@ import { router } from "@/router";
 import { reactive } from "vue";
 
 import { useUsersStore } from "@/stores";
-const usersStore = useUsersStore;
+const usersStore = useUsersStore();
 usersStore.getAll();
 const { users } = storeToRefs(usersStore);
 //usersStore.getAll(); see the moved method
@@ -61,7 +61,7 @@ const schema = Yup.object().shape({
         <Form
           @submit="onSubmit"
           :validation-schema="schema"
-          :initial-values="this.referralStore.users"
+          :initial-values="referralStore.users"
           v-slot="{ errors }"
         >
           <div class="form-row" id="form_row_bg">
@@ -203,8 +203,6 @@ const schema = Yup.object().shape({
 
 <script>
 import DataService from "../services/DataService";
-//import { get, last } from 'lodash';
-
 export default {
   name: "add-tutorial",
   data() {
@@ -225,7 +223,7 @@ export default {
     };
   },
   mounted() {
-    let formValues = this.referralStore.users;
+    let formValues = referralStore.users;
     console.log("FORMS VALUES from referralStore.users : ", formValues);
     //this.getAgentCode("James Bond");
   },
@@ -237,21 +235,21 @@ export default {
       // set loggedIn state
       let message;
       message = "User added";
-      this.alertStore.success(message);
-      this.referralStore.success(true);
+      alertStore.success(message);
+      referralStore.success(true);
       // commit form data
-      this.referralStore.register(this.tutorial);
+      referralStore.register(this.tutorial);
     },
     saveTutorial() {
       var data = {
-        yourName: this.referralStore.users.yourName,
-        referralName: this.referralStore.users.referralName,
-        agentName: this.referralStore.users.agentName,
-        agentCode: this.referralStore.users.agentCode,
-        businessName: this.referralStore.businessName,
-        phone: this.referralStore.phone,
-        title: this.referralStore.users.title,
-        description: this.referralStore.users.description,
+        yourName: referralStore.users.yourName,
+        referralName: referralStore.users.referralName,
+        agentName: referralStore.users.agentName,
+        agentCode: referralStore.users.agentCode,
+        businessName: referralStore.businessName,
+        phone: referralStore.phone,
+        title: referralStore.users.title,
+        description: referralStore.users.description,
       };
       // call the create function POST with data
       DataService.create(data)
@@ -274,7 +272,7 @@ export default {
       this.tutorial.agentCode = "";
       this.tutorial.title = "";
       this.tutorial.description = "";
-      this.referralStore.clear();
+      referralStore.clear();
     },
     getAgentCode(agentNamed) {
       let nameArray = agentNamed.split(" ");

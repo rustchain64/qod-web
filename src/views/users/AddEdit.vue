@@ -7,7 +7,6 @@ import { useAgentReferCodeStore } from "@/stores";
 import { useUsersStore, useAlertStore } from "@/stores";
 import { router } from "@/router";
 
-// eslint-disable-next-line no-unused-vars
 const referallCodeStore = useAgentReferCodeStore();
 
 const usersStore = useUsersStore();
@@ -195,14 +194,14 @@ export default {
       console.log(event.target.value);
     },
     fetchReferralCodes() {
-      let returnCodes = this.referallCodeStore.agentCodes;
+      let returnCodes = referallCodeStore.agentCodes;
       console.log("User List : ", returnCodes[0]);
       let codesLength = returnCodes[0].length - 1;
       this.length = codesLength;
       console.log("Fetched Codes length: ", codesLength);
       console.log("Fetched Code : ", returnCodes[0][codesLength].agentCode);
       this.referCode = returnCodes[0][codesLength].agentCode;
-      this.referallCodeStore.deleteOneAgentCodes();
+      referallCodeStore.deleteOneAgentCodes();
     },
   },
 };

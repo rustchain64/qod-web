@@ -4,7 +4,6 @@ import { fetchWrapper } from "@/helpers";
 import { router } from "@/router";
 import { useAlertStore } from "@/stores";
 
-//const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
 const baseUrl = `http://localhost:4000/users`;
 
 export const useAuthStore = defineStore({
@@ -37,7 +36,6 @@ export const useAuthStore = defineStore({
       }
     },
     logout() {
-      console.log("LOG OUT");
       this.user = null;
       localStorage.removeItem("user");
       router.push("/account/login");

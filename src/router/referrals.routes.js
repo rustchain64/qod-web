@@ -1,5 +1,5 @@
 import {
-  ReferralLayout,
+  Layout,
   ListView,
   AddReferralView,
   AddEditReferral,
@@ -8,7 +8,7 @@ import {
 
 export default {
   path: "/referrals",
-  component: ReferralLayout,
+  component: Layout,
   children: [
     {
       path: "",

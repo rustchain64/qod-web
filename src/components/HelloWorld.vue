@@ -1,33 +1,42 @@
+<script setup>
+defineProps({
+  msg: {
+    type: String,
+    required: true,
+  },
+});
+</script>
+
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>The landing page for the coming PIE.IO</p>
+  <div class="greetings">
+    <h1 class="green">{{ msg }}</h1>
+    <h3>
+      Your getting closer to getting your piece of the PIE...
+      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a>
+    </h3>
   </div>
 </template>
 
-<script>
-export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
-};
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h1 {
+  font-weight: 500;
+  font-size: 2.6rem;
+  top: -10px;
+}
+
 h3 {
-  margin: 40px 0 0;
+  font-size: 1.2rem;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.greetings h1,
+.greetings h3 {
+  text-align: center;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+
+@media (min-width: 1024px) {
+  .greetings h1,
+  .greetings h3 {
+    text-align: left;
+  }
 }
 </style>

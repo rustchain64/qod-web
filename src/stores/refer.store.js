@@ -1,13 +1,13 @@
 import { defineStore } from "pinia";
-// import { fetchWrapper } from '@/helpers';
-// import { useAuthStore } from '@/stores';
+// import { fetchWrapper } from "@/helpers";
+// import { useAuthStore } from "@/stores";
 
 //const baseUrl = `${import.meta.env.VITE_API_URL}/referrals`;
 
 export const useReferStore = defineStore({
   id: "referrals",
   state: () => ({
-    users: {},
+    refUsers: {},
     loggedIn: null,
   }),
   actions: {
@@ -16,13 +16,13 @@ export const useReferStore = defineStore({
       console.log("REGISTER LOGGED IN STATUS,", message);
     },
     register(refferal) {
-      this.users = { ...refferal };
-      console.log("REGISTER BACK UP DATA,", this.users);
+      this.refUsers = { ...refferal };
+      console.log("REGISTER BACK UP DATA,", this.refUsers);
       //localStorage.setItem('referralAttributes', JSON.stringify(refferal));
     },
     clear() {
       //this.users = {};
-      console.log("CLEARING OUT FORM VALUES,", this.users);
+      console.log("CLEARING OUT FORM VALUES,", this.refUsers);
       //localStorage.setItem('referralAttributes', JSON.stringify(refferal));
     },
   },
