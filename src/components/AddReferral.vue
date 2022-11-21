@@ -23,10 +23,11 @@ const alertStore = useAlertStore();
 const route = useRoute();
 const id = route.params.id;
 const terms = reactive({});
-let title = "Who would you like to refer?";
+let testValue = process.env.VUE_APP_QOD_API_URL;
+console.log("TEST ENV VALUES: ", testValue);
+let title = "Who would you like to refer?" + testValue;
 let referral = null;
 let isDisabled = true;
-let testLabel = this.process.env.VUE_APP_QOD_API_URL;
 if (id) {
   // edit mode
   title = "Edit User";
@@ -67,7 +68,7 @@ const schema = Yup.object().shape({
         >
           <div class="form-row" id="form_row_bg">
             <div class="form-group col">
-              <label>{{ testLabel }}</label>
+              <label>Your Name</label>
               <Field
                 name="yourName"
                 type="text"
