@@ -26,6 +26,7 @@ const terms = reactive({});
 let title = "Who would you like to refer?";
 let referral = null;
 let isDisabled = true;
+let testLabel = this.process.env.VUE_APP_QOD_API_URL;
 if (id) {
   // edit mode
   title = "Edit User";
@@ -66,7 +67,7 @@ const schema = Yup.object().shape({
         >
           <div class="form-row" id="form_row_bg">
             <div class="form-group col">
-              <label>Your Name</label>
+              <label>{{ testLabel }}</label>
               <Field
                 name="yourName"
                 type="text"
