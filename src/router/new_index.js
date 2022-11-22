@@ -6,7 +6,7 @@ import accountRoutes from "./account.routes";
 import usersRoutes from "./users.routes";
 
 export const router = createRouter({
-  history: createWebHistory("http://localhost:4000"),
+  history: createWebHistory("http://localhost:8080"),
   linkActiveClass: "active",
   routes: [
     { path: "/", component: Home },

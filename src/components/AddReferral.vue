@@ -23,9 +23,9 @@ const alertStore = useAlertStore();
 const route = useRoute();
 const id = route.params.id;
 const terms = reactive({});
-let testValue = process.env.VUE_APP_QOD_API_URL;
+let testValue = process.env.VUE_APP_QOD_API_URL + "/api/users";
 console.log("TEST ENV VALUES: ", testValue);
-let title = "Who would you like to refer?" + testValue;
+let title = "Who would you like to refer?";
 let referral = null;
 let isDisabled = true;
 if (id) {

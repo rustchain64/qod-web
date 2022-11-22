@@ -8,6 +8,7 @@ export const fetchWrapper = {
 };
 
 function request(method) {
+  //console.log("FETCH WRAPPER MAKING REQUEST IS POST? : ", method);
   return (url, body) => {
     const requestOptions = {
       method,
@@ -24,10 +25,13 @@ function request(method) {
 // helper functions
 
 function authHeader(url) {
+  console.log("AUTH HEADER URL : ", url);
   // return auth header with jwt if user is logged in and request is to the api url
   const { user } = useAuthStore();
   const isLoggedIn = !!user?.token;
-  const isApiUrl = url.startsWith("http://localhost:4000");
+  //const isApiUrl = url.startsWith("http://localhost:4000");
+  const isApiUrl = url.startsWith("http://localhost:8080/api/users");
+
   if (isLoggedIn && isApiUrl) {
     return { Authorization: `Bearer ${user.token}` };
   } else {
@@ -36,6 +40,7 @@ function authHeader(url) {
 }
 
 async function handleResponse(response) {
+  console.log("HANDLE RESPONSE ", response);
   const isJson = response.headers
     ?.get("content-type")
     ?.includes("application/json");
@@ -43,6 +48,7 @@ async function handleResponse(response) {
 
   // check for error response
   if (!response.ok) {
+    console.log("IS ERROR RESPONSE ", response.ok);
     const { user, logout } = useAuthStore();
     if ([401, 403].includes(response.status) && user) {
       // auto logout if 401 Unauthorized or 403 Forbidden response returned from api

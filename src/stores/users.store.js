@@ -3,7 +3,8 @@ import { defineStore } from "pinia";
 import { fetchWrapper } from "@/helpers";
 import { useAuthStore } from "@/stores";
 
-const baseUrl = `http://localhost:4000/users`;
+//const baseUrl = `http://localhost:4000/users`;
+const baseUrl = `http://localhost:8080/api/users`;
 
 export const useUsersStore = defineStore({
   id: "users",
