@@ -53,7 +53,6 @@ const authStore = useAuthStore();
 </template>
 
 <style scoped>
-@import "@/assets/base.css";
 @import "@/assets/main.css";
 
 .nav_wrapper {
