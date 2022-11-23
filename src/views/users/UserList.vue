@@ -85,7 +85,7 @@ export default {
   // data() {
   //   return {};
   // },
-  name: "add-tutorial",
+  name: "add-list",
   data() {
     return {
       id: null,

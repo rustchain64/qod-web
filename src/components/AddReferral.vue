@@ -5,7 +5,8 @@ import * as Yup from "yup";
 import { useRoute } from "vue-router";
 import { storeToRefs } from "pinia";
 import { useAuthStore } from "@/stores";
-import { useReferStore, useAlertStore } from "@/stores";
+import { useAlertStore } from "@/stores/alert.store";
+import { useReferralStore } from "@/stores/refer.store";
 import { router } from "@/router";
 import { reactive } from "vue";
 
@@ -13,12 +14,13 @@ import { useUsersStore } from "@/stores";
 const usersStore = useUsersStore();
 usersStore.getAll();
 const { users } = storeToRefs(usersStore);
-//usersStore.getAll(); see the moved method
 
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
-const referralStore = useReferStore();
+
+const referralStore = useReferralStore();
 const { refferal } = storeToRefs(referralStore);
+
 const alertStore = useAlertStore();
 const route = useRoute();
 const id = route.params.id;
@@ -28,12 +30,12 @@ console.log("TEST ENV VALUES: ", testValue);
 let title = "Who would you like to refer?";
 let referral = null;
 let isDisabled = true;
-if (id) {
-  // edit mode
-  title = "Edit User";
-  ({ referral } = storeToRefs(referralStore));
-  referralStore.getById(id);
-}
+// if (id) {
+//   // edit mode
+//   title = "Edit User";
+//   ({ referral } = storeToRefs(referralStore));
+//   referralStore.getById(id);
+// }
 const schema = Yup.object().shape({
   agentCode: Yup.string(),
   yourName: Yup.string().required("First Name is required"),
@@ -62,7 +64,6 @@ const schema = Yup.object().shape({
       <div v-if="!submitted">
         <Form
           @submit="onSubmit"
-          :validation-schema="schema"
           :initial-values="referralStore.users"
           v-slot="{ errors }"
         >
@@ -181,9 +182,10 @@ const schema = Yup.object().shape({
             </button>
           </div>
 
-          <div v-if="referralStore.loggedIn !== null">
+          <div>
+            <!-- <div v-if="referralStore.loggedIn !== null"> -->
             <button
-              @click="saveTutorial"
+              @click="saveReferral"
               class="btn btn-success"
               id="login_button"
             >
@@ -225,8 +227,9 @@ export default {
     };
   },
   mounted() {
-    let formValues = referralStore.users;
-    console.log("FORMS VALUES from referralStore.users : ", formValues);
+    console.log("MOUNTED ADD REFERRAL");
+    // let formValues = referralStore.users;
+    // console.log("FORMS VALUES from referralStore.users : ", formValues);
     //this.getAgentCode("James Bond");
   },
   methods: {
@@ -242,16 +245,16 @@ export default {
       // commit form data
       referralStore.register(this.tutorial);
     },
-    saveTutorial() {
+    saveReferral() {
       var data = {
-        yourName: referralStore.users.yourName,
-        referralName: referralStore.users.referralName,
-        agentName: referralStore.users.agentName,
-        agentCode: referralStore.users.agentCode,
-        businessName: referralStore.businessName,
-        phone: referralStore.phone,
-        title: referralStore.users.title,
-        description: referralStore.users.description,
+        yourName: referralStore.refUsers.yourName,
+        referralName: referralStore.refUsers.referralName,
+        agentName: referralStore.refUsers.agentName,
+        agentCode: referralStore.refUsers.agentCode,
+        businessName: referralStore.refUsers.businessName,
+        phone: referralStore.refUsers.phone,
+        title: referralStore.refUsers.title,
+        description: referralStore.refUsers.description,
       };
       // call the create function POST with data
       DataService.create(data)

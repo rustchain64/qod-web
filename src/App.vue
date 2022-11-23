@@ -1,13 +1,17 @@
 <script setup>
 //import { storeToRefs } from "pinia";
 import { useAuthStore } from "@/stores";
+//import { useReferralStore } from "@/stores/refer.store";
 
 const authStore = useAuthStore();
+//const referralStore = useReferralStore();
+
 //const { user } = storeToRefs(authStore);
 </script>
 
 <template>
   <div class="wrapper">
+    <!-- {{ referralStore }} -->
     <div v-show="authStore.user" class="nav_wrapper">
       <img
         alt="Go Free logo"

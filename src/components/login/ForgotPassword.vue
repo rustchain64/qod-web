@@ -8,8 +8,8 @@
         <input type="email" class="form-control form-control-lg" />
       </div>
 
-      <!-- <button type="submit" class="btn btn-dark btn-lg btn-block" class="btn btn-success" @click="newTutorial"> -->
-      <button type="submit" class="btn btn-success" @click="newPassword">
+      <!-- <button type="submit" class="btn btn-dark btn-lg btn-block" class="btn btn-success" @click=""> -->
+      <button type="submit" class="btn btn-success" @click="resetPassword">
         Reset password
       </button>
     </form>
@@ -21,28 +21,28 @@ export default {
   // data() {
   //   return {};
   // },
-  name: "add-tutorial",
+  name: "forgot-password",
   data() {
     return {
-      tutorial: {
+      renew: {
         id: null,
-        title: "",
-        description: "",
+        email: "",
+        password: "",
         published: false,
       },
       submitted: false,
     };
   },
   methods: {
-    saveTutorial() {
+    resetPassword() {
       var data = {
-        title: this.tutorial.title,
-        description: this.tutorial.description,
+        title: this.renew.title,
+        description: this.renew.description,
       };
 
       DataService.create(data)
         .then((response) => {
-          this.tutorial.id = response.data.id;
+          this.renew.id = response.data.id;
           console.log(response.data);
           this.submitted = true;
         })
@@ -51,9 +51,9 @@ export default {
         });
     },
 
-    newTutorial() {
+    newPassword() {
       this.submitted = false;
-      this.tutorial = {};
+      this.renew = {};
     },
   },
 };

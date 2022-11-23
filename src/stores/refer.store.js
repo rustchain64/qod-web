@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 
 //const baseUrl = `${import.meta.env.VITE_API_URL}/referrals`;
 
-export const useReferStore = defineStore({
+export const useReferralStore = defineStore({
   id: "referrals",
   state: () => ({
     refUsers: {},

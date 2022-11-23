@@ -3,7 +3,6 @@ import { defineStore } from "pinia";
 import { fetchWrapper } from "@/helpers";
 import { useAuthStore } from "@/stores";
 
-//const baseUrl = `http://localhost:4000/users`;
 const baseUrl = `http://localhost:8080/api/users`;
 
 export const useUsersStore = defineStore({
@@ -14,6 +13,7 @@ export const useUsersStore = defineStore({
   }),
   actions: {
     async register(user) {
+      console.log("REGISTER USER");
       await fetchWrapper.post(`${baseUrl}/register`, user);
     },
     async getAll() {

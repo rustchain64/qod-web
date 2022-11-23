@@ -20,39 +20,39 @@ const { user } = storeToRefs(authStore);
     </h4>
     <div class="card-body">
       <div class="list row">
-        <!-- <div class="col-md-8">
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search by title"
-            v-model="title"
-          />
-          <div class="input-group-append">
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              @click="searchTitle"
-            >
-              Search
-            </button>
+        <div class="col-md-8">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search by title"
+              v-model="title"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                @click="searchReferral"
+              >
+                Search
+              </button>
+            </div>
           </div>
         </div>
-      </div> -->
         <div class="col-md-6">
           <h4>Referrals List</h4>
           <ul class="list-group">
             <li
               class="list-group-item"
               :class="{ active: index == currentIndex }"
-              v-for="(tutorial, index) in tutorials"
+              v-for="(referral, index) in referrals"
               :key="index"
-              @click="setActiveReferral(tutorial, index)"
+              @click="setActiveReferral(referral, index)"
             >
-              {{ tutorial.yourName }}
-              {{ tutorial.agentName }}
-              {{ tutorial.agentCode }}
-              {{ tutorial.phone }}
+              {{ referral.yourName }}
+              {{ referral.agentName }}
+              {{ referral.agentCode }}
+              {{ referral.phone }}
             </li>
           </ul>
         </div>
@@ -125,7 +125,7 @@ export default {
   name: "referral-list",
   data() {
     return {
-      tutorials: [],
+      referrals: [],
       currentReferral: null,
       currentIndex: -1,
       title: "",
@@ -137,14 +137,14 @@ export default {
     this.userData = currentUser.agentCode;
     this.question = currentUser.agentCode;
     console.log("REFERRALS LIST USER AGENT CODE IS : ", this.userData);
-    //this.searchTitle();
+    //this.searchReferral();
   },
   methods: {
-    retrieveTutorials() {
-      console.log("GETTING ALL TUTORIALS");
+    retrieveReferrals() {
+      console.log("GETTING ALL REFERRALS");
       DataService.getAll()
         .then((response) => {
-          this.tutorials = response.data;
+          this.referrals = response.data;
           console.log(response.data);
         })
         .catch((e) => {
@@ -153,7 +153,7 @@ export default {
     },
 
     refreshList() {
-      this.retrieveTutorials();
+      this.retrieveReferrals();
       this.currentReferral = null;
       this.currentIndex = -1;
     },
@@ -163,7 +163,7 @@ export default {
       this.currentIndex = tutorial ? index : -1;
     },
 
-    removeAllTutorials() {
+    removeAllReferrals() {
       DataService.deleteAll()
         .then((response) => {
           console.log(response.data);
@@ -173,10 +173,10 @@ export default {
           console.log(e);
         });
     },
-    searchTitle() {
+    searchReferral() {
       DataService.findByTitle(this.userData)
         .then((response) => {
-          this.tutorials = response.data;
+          this.referrals = response.data;
           this.setActiveReferral(null);
           console.log("SEARCH TITLE RESPONSE DATA:::  ", response.data);
         })
@@ -186,8 +186,7 @@ export default {
     },
   },
   mounted() {
-    //this.retrieveTutorials();
-    this.searchTitle();
+    this.searchReferral();
   },
 };
 </script>
