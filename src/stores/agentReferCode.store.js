@@ -3,8 +3,6 @@ import { defineStore } from "pinia";
 // import { useAuthStore } from "@/stores";
 // import referralCodeGenerator from "referral-code-generator";
 
-//const baseUrl = `${import.meta.env.VITE_API_URL}/referrals`;
-
 export const useAgentReferCodeStore = defineStore({
   id: "agentReferralCodes",
   state: () => ({

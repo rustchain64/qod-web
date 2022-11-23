@@ -4,7 +4,6 @@ import { fetchWrapper } from "@/helpers";
 import { router } from "@/router";
 import { useAlertStore } from "@/stores";
 
-//const baseUrl = `http://localhost:4000/users`;
 const baseUrl = `http://localhost:8080/api/users`;
 
 export const useAuthStore = defineStore({
@@ -18,7 +17,6 @@ export const useAuthStore = defineStore({
     async login(username, password) {
       console.log("A USER IS LOGGING IN", username);
       console.log("A USER IS LOGGING IN", password);
-      console.log("A USER IS LOGGING IN");
       try {
         //const user = await fetchWrapper.post(`${baseUrl}/authenticate`, {
         // const user = await fetchWrapper.post(`${baseUrl}`, {
