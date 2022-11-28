@@ -10,8 +10,14 @@ const { user } = storeToRefs(authStore);
 <template>
   <div v-if="user">
     <h2 class="card-header">Admin Dashboard: {{ user.firstname }}</h2>
-    <div>
+    <div class="page-width">
       <LandingPage />
     </div>
   </div>
 </template>
+
+<style scoped>
+.page-width {
+  width: 90vw;
+}
+</style>

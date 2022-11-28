@@ -27,15 +27,15 @@ const id = route.params.id;
 const terms = reactive({});
 let testValue = process.env.VUE_APP_QOD_API_URL + "/api/users";
 console.log("TEST ENV VALUES: ", testValue);
-let title = "Who would you like to refer?";
+let title = "Make a Referral";
 let referral = null;
 let isDisabled = true;
-// if (id) {
-//   // edit mode
-//   title = "Edit User";
-//   ({ referral } = storeToRefs(referralStore));
-//   referralStore.getById(id);
-// }
+if (id) {
+  // edit mode
+  title = "Edit User";
+  ({ referral } = storeToRefs(referralStore));
+  referralStore.getById(id);
+}
 const schema = Yup.object().shape({
   agentCode: Yup.string(),
   yourName: Yup.string().required("First Name is required"),
@@ -53,157 +53,161 @@ function onSubmit() {
   <div class="bg"></div>
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
-  <div class="header_row">
-    <!-- <img
-      alt="Go Free logo"
-      class="nav_logo"
-      src="@/assets/images/transparent/pie_io_clr_slgn_trns.png"
-      height="60"
-    /> -->
-    <h2 class="card-header" id="header_bg">{{ title }}</h2>
-  </div>
+  <div class="card m-3" id="form_bg">
+    <div class="header_row">
+      <img
+        alt="Go Free logo"
+        class="nav_logo"
+        src="@/assets/images/transparent/pie_io_clr_slgn_trns.png"
+        height="60"
+      />
+      <h2 class="card-header" id="header_bg">{{ title }}</h2>
+    </div>
 
-  <div class="form_bg">
     <div>
-      <div v-if="!submitted">
-        <Form
-          @submit="onSubmit"
-          :initial-values="referralStore.users"
-          v-slot="{ errors }"
-        >
-          <div class="form-row" id="form_row_bg">
-            <div class="form-group col">
-              <label>Your Name</label>
-              <Field
-                name="yourName"
-                type="text"
-                v-model="tutorial.yourName"
-                class="form-control"
-                :class="{ 'is-invalid': errors.yourName }"
-              />
-              <div class="invalid-feedback">{{ errors.yourName }}</div>
+      <div>
+        <div v-if="!submitted">
+          <Form
+            @submit="onSubmit"
+            :initial-values="referralStore.users"
+            v-slot="{ errors }"
+          >
+            <div class="form-row">
+              <div class="form-group" id="group-width">
+                <label>Your Name</label>
+                <Field
+                  name="yourName"
+                  type="text"
+                  v-model="tutorial.yourName"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors.yourName }"
+                />
+                <div class="invalid-feedback">{{ errors.yourName }}</div>
+              </div>
+              <div class="form-group" id="group-width">
+                <label>Referral Name</label>
+                <Field
+                  name="referralName"
+                  type="text"
+                  v-model="tutorial.referralName"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors.referralName }"
+                />
+                <div class="invalid-feedback">{{ errors.referralName }}</div>
+              </div>
             </div>
-            <div class="form-group col">
-              <label>Referral Name</label>
-              <Field
-                name="referralName"
-                type="text"
-                v-model="tutorial.referralName"
-                class="form-control"
-                :class="{ 'is-invalid': errors.referralName }"
-              />
-              <div class="invalid-feedback">{{ errors.referralName }}</div>
+            <div class="form-row">
+              <div class="form-group" id="group-width">
+                <label>Agent Name</label>
+                <Field
+                  name="agentName"
+                  type="text"
+                  v-model="tutorial.agentName"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors.agentName }"
+                />
+                <div class="invalid-feedback">{{ errors.agentName }}</div>
+              </div>
+              <div class="form-group" id="agent-group-width">
+                <label>Agent Code</label>
+                <Field
+                  name="agentCode"
+                  type="text"
+                  v-model="tutorial.agentCode"
+                  class="form-control"
+                  id="code-width"
+                  :class="{ 'is-invalid': errors.agentCode }"
+                />
+                <div class="invalid-feedback">{{ errors.agentCode }}</div>
+              </div>
+              <button
+                @click="getAgentCode(this.tutorial.agentName)"
+                class="btn btn-warning"
+                id="codeButton"
+              >
+                Get Agent Code
+              </button>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col">
-              <label>Agent Name</label>
-              <Field
-                name="agentName"
-                type="text"
-                v-model="tutorial.agentName"
-                class="form-control"
-                :class="{ 'is-invalid': errors.agentName }"
-              />
-              <div class="invalid-feedback">{{ errors.agentName }}</div>
+            <div class="form-row">
+              <div class="form-group" id="group-width">
+                <label>Business Name</label>
+                <Field
+                  name="businessName"
+                  type="text"
+                  v-model="tutorial.businessName"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors.businessName }"
+                />
+                <div class="invalid-feedback">{{ errors.businessName }}</div>
+              </div>
+              <div class="form-group" id="group-width">
+                <label>Phone</label>
+                <Field
+                  name="phone"
+                  type="text"
+                  v-model="tutorial.phone"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors.phone }"
+                />
+                <div class="invalid-feedback">{{ errors.phone }}</div>
+              </div>
             </div>
-            <div class="form-group col">
-              <label>Agent Code</label>
-              <Field
-                name="agentCode"
-                type="text"
-                v-model="tutorial.agentCode"
-                class="form-control"
-                id="code-width"
-                :class="{ 'is-invalid': errors.agentCode }"
-              />
-              <div class="invalid-feedback">{{ errors.agentCode }}</div>
+            <div class="form-row">
+              <div class="form-group" id="group-width">
+                <label>Note</label>
+                <Field
+                  name="title"
+                  type="text"
+                  v-model="tutorial.title"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors.title }"
+                />
+                <div class="invalid-feedback">{{ errors.title }}</div>
+              </div>
+              <div class="form-group" id="group-width">
+                <label>Description</label>
+                <Field
+                  name="description"
+                  type="text"
+                  v-model="tutorial.description"
+                  class="form-control"
+                  :class="{ 'is-invalid': errors.description }"
+                />
+                <div class="invalid-feedback">{{ errors.description }}</div>
+              </div>
             </div>
-            <button
-              @click="getAgentCode(this.tutorial.agentName)"
-              class="btn btn-warning"
-              id="codeButton"
-            >
-              Get Agent Code
-            </button>
-          </div>
-          <div class="form-row">
-            <div class="form-group col">
-              <label>Business Name</label>
-              <Field
-                name="businessName"
-                type="text"
-                v-model="tutorial.businessName"
-                class="form-control"
-                :class="{ 'is-invalid': errors.businessName }"
-              />
-              <div class="invalid-feedback">{{ errors.businessName }}</div>
-            </div>
-            <div class="form-group col">
-              <label>Phone</label>
-              <Field
-                name="phone"
-                type="text"
-                v-model="tutorial.phone"
-                class="form-control"
-                :class="{ 'is-invalid': errors.phone }"
-              />
-              <div class="invalid-feedback">{{ errors.phone }}</div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col">
-              <label>Note</label>
-              <Field
-                name="title"
-                type="text"
-                v-model="tutorial.title"
-                class="form-control"
-                :class="{ 'is-invalid': errors.title }"
-              />
-              <div class="invalid-feedback">{{ errors.title }}</div>
-            </div>
-            <div class="form-group col">
-              <label>Description</label>
-              <Field
-                name="description"
-                type="text"
-                v-model="tutorial.description"
-                class="form-control"
-                :class="{ 'is-invalid': errors.description }"
-              />
-              <div class="invalid-feedback">{{ errors.description }}</div>
-            </div>
-          </div>
 
-          <div v-if="referralStore.loggedIn == null">
-            <button
-              @click="redirect_to_login"
-              class="btn btn-success"
-              id="login_button"
-            >
-              Login
-            </button>
-          </div>
+            <div class="button-row">
+              <div v-if="referralStore.loggedIn == null">
+                <button
+                  @click="redirect_to_login"
+                  class="btn btn-success"
+                  id="login_button"
+                >
+                  Login
+                </button>
+              </div>
 
-          <div>
-            <!-- <div v-if="referralStore.loggedIn !== null"> -->
-            <button
-              @click="saveReferral"
-              class="btn btn-success"
-              id="login_button"
-            >
-              Refer Now
-            </button>
-          </div>
-        </Form>
-      </div>
+              <div>
+                <!-- <div v-if="referralStore.loggedIn !== null"> -->
+                <button
+                  @click="saveReferral"
+                  class="btn btn-success"
+                  id="login_button"
+                >
+                  Refer Now
+                </button>
+              </div>
+            </div>
+          </Form>
+        </div>
 
-      <div v-else>
-        <h4>You submitted successfully!</h4>
-        <h4>Thanks {{ user.firstName }}</h4>
-        <h4>Agent {{ user.agentName }} will contact you shortly!</h4>
-        <button class="btn btn-success" @click="newReferral">Add</button>
+        <div v-else>
+          <h4>You submitted successfully!</h4>
+          <h4>Thanks {{ user.firstName }}</h4>
+          <h4>Agent {{ user.agentName }} will contact you shortly!</h4>
+          <button class="btn btn-success" @click="newReferral">Add</button>
+        </div>
       </div>
     </div>
   </div>
@@ -244,7 +248,7 @@ export default {
       // set loggedIn state
       let message;
       message = "User added";
-      this.useAlertStore.success(message);
+      useAlertStore.success(message);
       referralStore.success(true);
       // commit form data
       referralStore.register(this.tutorial);
@@ -320,24 +324,34 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #codeButton {
   height: 40px;
   margin-top: 37px;
 }
 #code-width {
-  width: 80%;
+  width: 90%;
 }
 .header_row {
   display: flex;
   background-color: whitesmoke;
 }
 Form {
+  width: 85vw;
   margin-left: 3%;
   margin-right: 3%;
   margin-top: 2%;
 }
-.form_bg {
+
+#group-width {
+  width: 28vw;
+}
+
+#agent-group-width {
+  width: 20vw;
+}
+
+#form_bg {
   background-color: rgba(255, 255, 255, 0.4);
   border-style: solid;
   border-width: 1px;
@@ -347,6 +361,17 @@ label {
   opacity: 1;
   font-weight: 900;
   font-size: larger;
+}
+
+.button-row {
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button-row button {
+  width: 100px;
+  margin-right: 10px;
 }
 
 #login_button {

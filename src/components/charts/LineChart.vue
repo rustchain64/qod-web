@@ -4,7 +4,16 @@
     This example demonstrates usage of both local and global plugins, zoom being
     global and data labels being local.
   </p> -->
-  <vue3-chart-js v-bind="{ ...lineChart }" />
+  <div
+    style="
+      width: 30vw;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 5%;
+    "
+  >
+    <vue3-chart-js v-bind="{ ...lineChart }" />
+  </div>
 </template>
 
 <script>
@@ -38,14 +47,14 @@ export default {
         datasets: [
           {
             label: "Pending",
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: [15, 59, 80, 81, 66, 70, 85],
             fill: false,
             borderColor: "#41B883",
             backgroundColor: "limegreen",
           },
           {
             label: "Completed",
-            data: [70, 25, 110, 90, 5, 60, 30],
+            data: [30, 25, 90, 98, 65, 60, 100],
             fill: false,
             borderColor: "#333",
             tension: 0.5,

@@ -1,6 +1,6 @@
 <template>
   <!-- <h2>Pie Chart</h2> -->
-  <div style="max-width: 400px">
+  <div style="width: 30vw; display: flex; flex-direction: column">
     <vue3-chart-js v-bind="{ ...pieChart }" />
   </div>
 </template>

@@ -12,72 +12,68 @@ usersStore.getAll();
 </script>
 
 <template>
-  <div class="card m-3">
-    <div class="card-header">
-      <div class="user-label">
-        <h3>Users List</h3>
-      </div>
-      <!-- <button @click="fetchReferralCodes" class="btn btn-sm btn-danger">
+  <div class="card-header">
+    <div class="user-label">
+      <h3>Users List</h3>
+    </div>
+    <!-- <button @click="fetchReferralCodes" class="btn btn-sm btn-danger">
         Fetch User Code</button>
         {{this.referCode}} -->
-      <div class="add-user-button">
-        <router-link to="/users/add" class="btn btn-sm">Add User</router-link>
-      </div>
+    <div class="add-user-button">
+      <router-link to="/users/add" class="btn btn-sm">Add User</router-link>
     </div>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th style="width: 20%">Persona Type</th>
-          <th style="width: 20%">Agent Code</th>
-          <th style="width: 20%">First Name</th>
-          <th style="width: 20%">Last Name</th>
-          <th style="width: 20%">Username</th>
-          <th style="width: 10%"></th>
-        </tr>
-      </thead>
-      <tbody v-if="users.length">
-        <template v-for="user in users" :key="user.id">
-          <tr>
-            <td>{{ user.persona }}</td>
-            <td>{{ user.agentCode }}</td>
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.username }}</td>
-            <td style="white-space: nowrap">
-              <router-link
-                :to="`/users/edit/${user.id}`"
-                class="btn btn-sm btn-primary mr-1"
-                >Edit</router-link
-              >
-              <button
-                @click="usersStore.delete(user.id)"
-                class="btn btn-sm btn-danger btn-delete-user"
-                :disabled="user.isDeleting"
-              >
-                <span
-                  v-if="user.isDeleting"
-                  class="spinner-border spinner-border-sm"
-                ></span>
-                <span v-else>Delete</span>
-              </button>
-            </td>
-          </tr>
-        </template>
-        <tr v-if="users.loading">
-          <td colspan="4" class="text-center">
-            <span class="spinner-border spinner-border-lg align-center"></span>
-          </td>
-        </tr>
-        <tr v-if="users.error">
-          <td colspan="4">
-            <div class="text-danger">
-              Error loading users: {{ users.error }}
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 20%">Persona Type</th>
+        <th style="width: 20%">Agent Code</th>
+        <th style="width: 20%">First Name</th>
+        <th style="width: 20%">Last Name</th>
+        <th style="width: 20%">Username</th>
+        <th style="width: 10%"></th>
+      </tr>
+    </thead>
+    <tbody v-if="users.length">
+      <template v-for="user in users" :key="user.id">
+        <tr>
+          <td>{{ user.persona }}</td>
+          <td>{{ user.agentcode }}</td>
+          <td>{{ user.firstname }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.username }}</td>
+          <td style="white-space: nowrap">
+            <router-link
+              :to="`/users/edit/${user.id}`"
+              class="btn btn-sm btn-primary mr-1"
+              >Edit</router-link
+            >
+            <button
+              @click="usersStore.delete(user.id)"
+              class="btn btn-sm btn-danger btn-delete-user"
+              :disabled="user.isDeleting"
+            >
+              <span
+                v-if="user.isDeleting"
+                class="spinner-border spinner-border-sm"
+              ></span>
+              <span v-else>Delete</span>
+            </button>
+          </td>
+        </tr>
+      </template>
+      <tr v-if="users.loading">
+        <td colspan="4" class="text-center">
+          <span class="spinner-border spinner-border-lg align-center"></span>
+        </td>
+      </tr>
+      <tr v-if="users.error">
+        <td colspan="4">
+          <div class="text-danger">Error loading users: {{ users.error }}</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
