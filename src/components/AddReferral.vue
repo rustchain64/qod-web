@@ -19,6 +19,7 @@ const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
 
 const referralStore = useReferralStore();
+console.log("CHECK REFERRAL STORE: ", referralStore.loggedIn);
 const { refferal } = storeToRefs(referralStore);
 
 const alertStore = useAlertStore();
@@ -188,8 +189,8 @@ function onSubmit() {
                 </button>
               </div>
 
-              <div>
-                <!-- <div v-if="referralStore.loggedIn !== null"> -->
+              <!-- <div> -->
+              <div v-if="referralStore.loggedIn !== null">
                 <button
                   @click="saveReferral"
                   class="btn btn-success"
@@ -246,15 +247,16 @@ export default {
       //force a login in order to Submit Referral
       router.push("/account/login");
       // set loggedIn state
-      let message;
-      message = "User added";
-      useAlertStore.success(message);
+      // let message;
+      // message = "User added";
+      useAlertStore.success;
       referralStore.success(true);
       // commit form data
       referralStore.register(this.tutorial);
     },
     saveReferral() {
       var data = {
+        // referallStroe shows as not devinded
         yourName: referralStore.refUsers.yourName,
         referralName: referralStore.refUsers.referralName,
         agentName: referralStore.refUsers.agentName,
