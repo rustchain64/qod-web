@@ -30,7 +30,8 @@ function authHeader(url) {
   const { user } = useAuthStore();
   const isLoggedIn = !!user?.token;
   //const isApiUrl = url.startsWith("http://localhost:4000");
-  const isApiUrl = url.startsWith("http://localhost:8080/api/users");
+  //const isApiUrl = url.startsWith("http://localhost:8080/api/users");
+  const isApiUrl = url.startsWith("http://localhost:8080");
 
   if (isLoggedIn && isApiUrl) {
     return { Authorization: `Bearer ${user.token}` };

@@ -240,7 +240,7 @@ export default {
       // set loggedIn state
       let message;
       message = "User added";
-      alertStore.success(message);
+      useAlertStore.success(message);
       referralStore.success(true);
       // commit form data
       referralStore.register(this.tutorial);
