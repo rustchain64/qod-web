@@ -43,6 +43,10 @@ const schema = Yup.object().shape({
   title: Yup.string().required("Username is required"),
   description: Yup.string().required("Username is required"),
 });
+
+function onSubmit() {
+  console.log("NO onSubmit Button: see AddReferral");
+}
 </script>
 
 <template>
@@ -240,7 +244,7 @@ export default {
       // set loggedIn state
       let message;
       message = "User added";
-      useAlertStore.success(message);
+      this.useAlertStore.success(message);
       referralStore.success(true);
       // commit form data
       referralStore.register(this.tutorial);
@@ -264,6 +268,7 @@ export default {
           this.submitted = true;
         })
         .catch((e) => {
+          console.log("CREATE REFFERAL ERROR");
           console.log(e);
         });
     },

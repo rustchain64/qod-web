@@ -1,6 +1,5 @@
 <script setup>
-// import WelcomeItem from "./WelcomeItem.vue";
-//import PieChart from "./charts/PieChart";
+import PieChart from "./charts/PieChart";
 import LineChart from "./charts/LineChart.vue";
 import UserList from "../views/users/UserList.vue";
 import ReferralsList from "./ReferralsList.vue";
@@ -9,108 +8,108 @@ import Reporting from "./Reporting.vue";
 </script>
 
 <template>
-  <div class="left_menu">
-    <button @click="userSplash">
-      <img
-        alt="Go Free logo"
-        class="export_pdf"
-        src="@/assets/images/user_list.png"
-      />
-    </button>
-    <button @click="referralListSplash">
-      <img
-        alt="Go Free logo"
-        class="export_pdf"
-        src="@/assets/images/list-256.png"
-      />
-    </button>
-    <button @click="chartSplash">
-      <img
-        alt="Go Free logo"
-        class="export_pdf"
-        src="@/assets/images/chart_icon.png"
-      />
-    </button>
-    <button @click="toolingSplash">
-      <img
-        alt="Go Free logo"
-        class="export_pdf"
-        src="@/assets/images/tool.png"
-      />
-    </button>
-    <button @click="ecoSplash">
-      <img
-        alt="Go Free logo"
-        class="export_pdf"
-        src="@/assets/images/data_feedback.png"
-      />
-    </button>
-    <button @click="exportPdf">
-      <img
-        alt="Go Free logo"
-        class="export_pdf"
-        src="@/assets/images/pdf_exp.jpg"
-      />
-    </button>
-  </div>
-
-  <div v-if="this.view == 'exportPdf'">
-    <img alt="Export as PDF" src="@/assets/images/pdf_exp.jpg" />
-  </div>
-  <div v-if="this.view == 'userList'"><UserList /></div>
-  <div v-else-if="this.view == 'chart'" class="charting">
-    <div>
-      <h2>Referrals by Status</h2>
-      <!-- <PieChart /> -->
+  <div class="row">
+    <div class="left_column">
+      <button @click="userSplash">
+        <img
+          alt="user_list"
+          class="export_pdf"
+          src="@/assets/images/user_list.png"
+        />
+      </button>
+      <button @click="referralListSplash">
+        <img
+          alt="referral_list"
+          class="export_pdf"
+          src="@/assets/images/list-256.png"
+        />
+      </button>
+      <button @click="chartSplash">
+        <img
+          alt="charts"
+          class="export_pdf"
+          src="@/assets/images/chart_icon.png"
+        />
+      </button>
+      <button @click="toolingSplash">
+        <img alt="tools" class="export_pdf" src="@/assets/images/tool.png" />
+      </button>
+      <button @click="ecoSplash">
+        <img
+          alt="Go Free logo"
+          class="export_pdf"
+          src="@/assets/images/data_feedback.png"
+        />
+      </button>
+      <button @click="exportPdf">
+        <img
+          alt="Go Free logo"
+          class="export_pdf"
+          src="@/assets/images/pdf_exp.jpg"
+        />
+      </button>
     </div>
-    <div>
-      <h2>Referrals Rewards</h2>
-      <LineChart />
-    </div>
-  </div>
-  <div v-else-if="this.view == 'tooling'"><Tooling /></div>
-  <div v-else-if="this.view == 'eco'"><Reporting /></div>
-  <div v-else-if="this.view == 'support'">
-    <!-- <h2>Referrals Details</h2> -->
-    <ReferralsList />
-  </div>
 
-  <div v-else-if="this.view == 'landing'" class="content">
-    <div class="top_row">
-      <div class="top_left">
+    <div class="right_column">
+      <div v-if="this.view == 'exportPdf'">
+        <img alt="Export as PDF" src="@/assets/images/pdf_exp.jpg" />
+      </div>
+      <div v-if="this.view == 'userList'"><UserList /></div>
+      <div v-else-if="this.view == 'chart'" class="charting">
         <div>
-          <img
-            alt="Go Free logo"
-            class="logo"
-            src="@/assets/images/dash_user_list.png"
-            height="300px"
-          />
+          <h2>Referrals by Status</h2>
+          <PieChart />
+        </div>
+        <div>
+          <h2>Referrals Rewards</h2>
+          <LineChart />
         </div>
       </div>
-      <div class="top_right">
-        <div>
-          <img
-            alt="Go Free logo"
-            class="logo"
-            src="@/assets/images/referList.png"
-            height="300px"
-          />
-        </div>
+      <div v-else-if="this.view == 'tooling'"><Tooling /></div>
+      <div v-else-if="this.view == 'eco'"><Reporting /></div>
+      <div v-else-if="this.view == 'support'">
+        <!-- <h2>Referrals Details</h2> -->
+        <ReferralsList />
       </div>
-    </div>
 
-    <div class="bottom_row">
-      <div class="bottom_left">
-        <div>Bottom Left</div>
-      </div>
-      <div class="bottom_right">
-        <div>
-          <img
-            alt="Go Free logo"
-            class="logo"
-            src="@/assets/images/charts_button.png"
-            height="300px"
-          />
+      <div v-else-if="this.view == 'landing'" class="content">
+        <div class="top_row">
+          <div class="top_left">
+            <div>
+              <img
+                alt="Go Free logo"
+                class="logo"
+                src="@/assets/images/dash_user_list.png"
+                height="300px"
+              />
+            </div>
+          </div>
+          <div class="top_right">
+            <div>
+              <img
+                alt="Go Free logo"
+                class="logo"
+                src="@/assets/images/referList.png"
+                height="300px"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom_row">
+          <div class="bottom_left">
+            <div>Bottom Left</div>
+          </div>
+          <div class="bottom_right">
+            <div>
+              <img
+                alt="Go Free logo"
+                class="logo"
+                src="@/assets/images/charts_button.png"
+                height="300px"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -158,18 +157,32 @@ export default {
 </script>
 
 <style scoped>
-.left_menu {
-  float: left;
+.row {
   display: flex;
-  flex-direction: column;
-  width: 4vw;
-  height: 90vh;
-  background-color: whitesmoke;
+  /* width: 4vw;
+  height: 90vh; 
+  background-color: whitesmoke;*/
 }
-.left_menu button {
+/* .left_menu button {
   margin-bottom: 30%;
   border: none;
+} */
+
+/* Create two equal columns that sits next to each other */
+.left_column {
+  flex: 10%;
+  display: flex;
+  flex-direction: column;
+  /* padding: 10px; */
+  width: 5vw;
+  height: 300px; /* Should be removed. Only for demonstration */
 }
+.right_column {
+  flex: 80%;
+  /* padding: 10px; */
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
 .content {
   max-width: 90vw;
 }

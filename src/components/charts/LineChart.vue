@@ -1,91 +1,90 @@
 <template>
-  <div class="line_chart">
-    <LineChart v-bind="lineChartProps" />
-  </div>
+  <!-- <h2>Plugin Example</h2>
+  <p>
+    This example demonstrates usage of both local and global plugins, zoom being
+    global and data labels being local.
+  </p> -->
+  <vue3-chart-js v-bind="{ ...lineChart }" />
 </template>
 
 <script>
-import { computed } from "vue";
-import { LineChart, useLineChart, ChartData, ChartOptions } from "vue-chart-3";
-import { Chart, registerables } from "chart.js";
-//import { Chart, ChartData, ChartOptions, registerables } from "chart.js";
+import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
+import zoomPlugin from "chartjs-plugin-zoom";
+import dataLabels from "chartjs-plugin-datalabels";
 
-Chart.register(...registerables);
+// globally registered and available for all charts
+Vue3ChartJs.registerGlobalPlugins([zoomPlugin]);
 
 export default {
-  name: "Home",
-  components: { LineChart },
+  name: "App",
+  components: {
+    Vue3ChartJs,
+  },
   setup() {
-    const getData =
-      computed <
-      ChartData <
-      "line" >>
-        (() => ({
-          labels: [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
-          ],
-          datasets: [
-            {
-              label: "Pending",
-              data: [45, 59, 80, 81, 56, 55, 40, 80, 70, 93, 95, 98],
-              fill: false,
-              borderColor: "limegreen",
-            },
-            {
-              label: "Completed",
-              data: [28, 48, 40, 29, 46, 57, 70, 78, 65, 88, 90, 92],
-              fill: false,
-              borderColor: "#565656",
-            },
-          ],
-        }));
-
-    const options =
-      computed <
-      ChartOptions <
-      "line" >>
-        (() => ({
-          plugins: {
-            legend: {
-              display: false,
+    const lineChart = {
+      type: "line",
+      // locally registered and available for this chart
+      plugins: [dataLabels],
+      data: {
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+        ],
+        datasets: [
+          {
+            label: "Pending",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            fill: false,
+            borderColor: "#41B883",
+            backgroundColor: "limegreen",
+          },
+          {
+            label: "Completed",
+            data: [70, 25, 110, 90, 5, 60, 30],
+            fill: false,
+            borderColor: "#333",
+            tension: 0.5,
+            backgroundColor: "black",
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          zoom: {
+            zoom: {
+              wheel: {
+                enabled: true,
+              },
+              pinch: {
+                enabled: true,
+              },
+              mode: "y",
             },
           },
-        }));
-
-    const { lineChartProps } = useLineChart({
-      options,
-      chartData: getData,
-    });
+          datalabels: {
+            backgroundColor: function (context) {
+              return context.dataset.backgroundColor;
+            },
+            borderRadius: 4,
+            color: "white",
+            font: {
+              weight: "bold",
+            },
+            formatter: Math.round,
+            padding: 6,
+          },
+        },
+      },
+    };
 
     return {
-      getData,
-      options,
-      lineChartProps,
+      lineChart,
     };
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-.line_chart {
-  max-width: 600px;
-}
-</style>

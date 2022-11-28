@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+// import { useAlertStore } from "@/stores";
 // import { fetchWrapper } from "@/helpers";
 // import { useAuthStore } from "@/stores";
 
@@ -13,15 +14,15 @@ export const useReferralStore = defineStore({
   actions: {
     success(message) {
       this.loggedIn = { message, type: "alert-success" };
-      console.log("REGISTER LOGGED IN STATUS,", message);
+      console.log("to Refer LOGGED IN STATUS,", message);
     },
     register(refferal) {
       this.refUsers = { ...refferal };
       console.log("REGISTER BACK UP DATA,", this.refUsers);
-      //localStorage.setItem('referralAttributes', JSON.stringify(refferal));
+      localStorage.setItem("referralAttributes", JSON.stringify(refferal));
     },
     clear() {
-      //this.users = {};
+      this.users = {};
       console.log("CLEARING OUT FORM VALUES,", this.refUsers);
       //localStorage.setItem('referralAttributes', JSON.stringify(refferal));
     },

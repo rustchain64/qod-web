@@ -3,6 +3,7 @@ import { storeToRefs } from "pinia";
 import { useAuthStore } from "@/stores";
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
+console.log("user is: ", user);
 </script>
 
 <template>
@@ -40,7 +41,7 @@ const { user } = storeToRefs(authStore);
           </div>
         </div>
         <div class="col-md-6">
-          <h4>Referrals List</h4>
+          <h4><em>Referrals List</em></h4>
           <ul class="list-group">
             <li
               class="list-group-item"
@@ -49,35 +50,35 @@ const { user } = storeToRefs(authStore);
               :key="index"
               @click="setActiveReferral(referral, index)"
             >
-              {{ referral.yourName }}
-              {{ referral.agentName }}
+              {{ referral.referralname }}
+              <!-- {{ referral.agentName }}
               {{ referral.agentCode }}
-              {{ referral.phone }}
+              {{ referral.phone }} -->
             </li>
           </ul>
         </div>
         <div class="col-md-6">
           <div v-if="currentReferral">
-            <h4>Referral ??</h4>
+            <h4><em>Referral Info</em></h4>
             <div>
               <label><strong>Merchant Name:</strong></label>
-              {{ currentReferral.yourName }}
+              {{ currentReferral.yourname }}
             </div>
             <div>
               <label><strong>Referral Name:</strong></label>
-              {{ currentReferral.referralName }}
+              {{ currentReferral.referralname }}
             </div>
             <div>
               <label><strong>Agent Name:</strong></label>
-              {{ currentReferral.agentName }}
+              {{ currentReferral.agentname }}
             </div>
             <div>
               <label><strong>Agent Code:</strong></label>
-              {{ currentReferral.agentCode }}
+              {{ currentReferral.agentcode }}
             </div>
             <div>
               <label><strong>BusinessName:</strong></label>
-              {{ currentReferral.businessName }}
+              {{ currentReferral.businessname }}
             </div>
             <div>
               <label><strong>Phone:</strong></label>
@@ -133,10 +134,10 @@ export default {
     };
   },
   created() {
-    let currentUser = user;
-    this.userData = currentUser.agentCode;
-    this.question = currentUser.agentCode;
-    console.log("REFERRALS LIST USER AGENT CODE IS : ", this.userData);
+    // let currentUser = user;
+    // this.userData = currentUser.agentCode;
+    // this.question = currentUser.agentCode;
+    // console.log("REFERRALS LIST USER AGENT CODE IS : ", this.userData);
     //this.searchReferral();
   },
   methods: {
@@ -186,6 +187,10 @@ export default {
     },
   },
   mounted() {
+    // let currentUser = user;
+    //this.userData = currentUser.agentCode;
+    //this.question = currentUser.agentCode;
+    //console.log("REFERRALS LIST USER AGENT CODE IS : ", this.userData);
     this.searchReferral();
   },
 };

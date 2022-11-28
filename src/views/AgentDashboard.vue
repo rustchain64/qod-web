@@ -2,7 +2,7 @@
 import { storeToRefs } from "pinia";
 
 import { useAuthStore } from "@/stores";
-//import PieChart from "../components/charts/PieChart";
+import PieChart from "../components/charts/PieChart";
 import LineChart from "../components/charts/LineChart.vue";
 
 const authStore = useAuthStore();
@@ -15,7 +15,7 @@ const { user } = storeToRefs(authStore);
     <div>
       <div class="pie" id="pie_left">
         <h2>Referrals by Status</h2>
-        <!-- <PieChart /> -->
+        <PieChart />
       </div>
       <div class="line" id="line_right">
         <h2>Referrals Rewards</h2>

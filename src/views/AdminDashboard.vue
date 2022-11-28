@@ -9,7 +9,7 @@ const { user } = storeToRefs(authStore);
 
 <template>
   <div v-if="user">
-    <h2 class="card-header">Admin Dashboard: {{ user.firstName }}</h2>
+    <h2 class="card-header">Admin Dashboard: {{ user.firstname }}</h2>
     <div>
       <LandingPage />
     </div>

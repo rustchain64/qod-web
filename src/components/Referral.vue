@@ -27,7 +27,7 @@
                 type="text"
                 class="form-control"
                 id="yourName"
-                v-model="currentReferral.yourName"
+                v-model="currentReferral.yourname"
               />
             </div>
             <div class="form-group" id="form_group_bg">
@@ -36,7 +36,7 @@
                 type="text"
                 class="form-control"
                 id="referralName"
-                v-model="currentReferral.referralName"
+                v-model="currentReferral.referralname"
               />
             </div>
           </div>
@@ -47,7 +47,7 @@
                 type="text"
                 class="form-control"
                 id="agentName"
-                v-model="currentReferral.agentName"
+                v-model="currentReferral.agentname"
               />
             </div>
             <div class="form-group" id="form_group_bg">
@@ -56,7 +56,7 @@
                 type="text"
                 class="form-control"
                 id="agentCode"
-                v-model="currentReferral.agentCode"
+                v-model="currentReferral.agentcode"
               />
             </div>
           </div>
@@ -67,7 +67,7 @@
                 type="text"
                 class="form-control"
                 id="businessName"
-                v-model="currentReferral.businessName"
+                v-model="currentReferral.businessname"
               />
             </div>
             <div class="form-group" id="form_group_bg">
@@ -106,7 +106,7 @@
               type="text"
               class="form-control"
               id="bankName"
-              v-model="currentReferral.bankName"
+              v-model="currentReferral.bankname"
             />
           </div>
           <div class="form-group space">
@@ -115,7 +115,7 @@
               type="text"
               class="form-control"
               id="routingNumber"
-              v-model="currentReferral.routingNumber"
+              v-model="currentReferral.routingnumber"
             />
           </div>
           <div class="form-group space">
@@ -124,7 +124,7 @@
               type="text"
               class="form-control"
               id="accountNumber"
-              v-model="currentReferral.accountNumber"
+              v-model="currentReferral.accountnumber"
             />
           </div>
           <div class="form-group space">

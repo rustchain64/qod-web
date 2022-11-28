@@ -1,12 +1,15 @@
 <script setup>
-//import { storeToRefs } from "pinia";
+import { storeToRefs } from "pinia";
 import { useAuthStore } from "@/stores";
-//import { useReferralStore } from "@/stores/refer.store";
+import { useReferralStore } from "@/stores";
 
 const authStore = useAuthStore();
-//const referralStore = useReferralStore();
+const { user } = storeToRefs(authStore);
+console.log("user : ", user);
 
-//const { user } = storeToRefs(authStore);
+const referralStore = useReferralStore();
+const { ref } = storeToRefs(referralStore);
+console.log("ref : ", ref);
 </script>
 
 <template>
